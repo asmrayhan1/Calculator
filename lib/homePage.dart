@@ -85,6 +85,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Custombutton(title: "C", buttonColor: Colors.white38, ontap: (){
                           expresion = '';
+                          setState(() {
+                            result = '';
+                          });
                           update(false);
                         }),
                         SizedBox(width: 10),

@@ -25,11 +25,22 @@ class _HomePageState extends State<HomePage> {
         if (r() >= -1e18 && r() <= 1e18) result = r().toString();
         else result = "Overflow";
         print(result);
+      } else {
+        result = "";
       }
     } catch (e){
       result = "Invalid Input";
       print("Error Found");
     }
+  }
+
+  void update(bool ok){
+    setState(() {
+      isEqual = false;
+      _controller.text = expresion;
+      if (ok) calculation();
+    });
+    print(_controller.text);
   }
 
   @override
@@ -74,10 +85,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Custombutton(title: "C", buttonColor: Colors.white38, ontap: (){
                           expresion = '';
-                          result = '';
-                          setState(() {
-                            _controller.text = expresion;
-                          });
+                          update(false);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "( )", buttonColor: Colors.white38, ontap: () {
@@ -85,31 +93,17 @@ class _HomePageState extends State<HomePage> {
                           if (flag) expresion += '(';
                           else expresion += ')';
                           flag = !flag;
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(false);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "%", buttonColor: Colors.white38, ontap: (){
                           expresion += '%';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(false);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "/", buttonColor: Colors.blueAccent, ontap: () {
                           expresion += '/';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          print(_controller.text);
+                          update(false);
                         })
                       ],
                     ),
@@ -121,43 +115,24 @@ class _HomePageState extends State<HomePage> {
                         Custombutton(title: "7", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '7';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "8", buttonColor: Colors.white24, ontap: () {
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '8';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "9", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '9';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "x", buttonColor: Colors.blueAccent, ontap: () {
                           expresion += '*';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          print(_controller.text);
+                          update(false);
                         })
                       ],
                     ),
@@ -169,43 +144,24 @@ class _HomePageState extends State<HomePage> {
                         Custombutton(title: "4", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '4';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "5", buttonColor: Colors.white24, ontap: () {
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '5';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "6", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '6';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "-", buttonColor: Colors.blueAccent, ontap: () {
                           expresion += '-';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          print(_controller.text);
+                          update(false);
                         })
                       ],
                     ),
@@ -217,43 +173,24 @@ class _HomePageState extends State<HomePage> {
                         Custombutton(title: "1", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '1';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "2", buttonColor: Colors.white24, ontap: () {
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '2';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "3", buttonColor: Colors.white24, ontap: (){
                           if (expresion.length == 1 && expresion[0] == '0') expresion = '';
                           expresion += '3';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "+", buttonColor: Colors.blueAccent, ontap: () {
                           expresion += '+';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          print(_controller.text);
+                          update(false);
                         })
                       ],
                     ),
@@ -265,32 +202,18 @@ class _HomePageState extends State<HomePage> {
                         Custombutton(title: ".", buttonColor: Colors.white24, ontap: (){
                           if (expresion.isEmpty) expresion = '0';
                           expresion += '.';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          print(_controller.text);
+                          update(false);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "0", buttonColor: Colors.white24, ontap: () {
                           if (expresion.length >= 1 && expresion[0] != '0') expresion += '0';
                           else if (expresion.length == 0) expresion += '0';
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "<--", buttonColor: Colors.white24, ontap: (){
                           if (expresion.isNotEmpty) expresion = expresion.substring(0, expresion.length - 1);
-                          setState(() {
-                            isEqual = false;
-                            _controller.text = expresion;
-                          });
-                          calculation();
-                          print(_controller.text);
+                          update(true);
                         }),
                         SizedBox(width: 10),
                         Custombutton(title: "=", buttonColor: Colors.blueAccent, ontap: () {
